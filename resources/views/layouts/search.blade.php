@@ -25,7 +25,7 @@
             {{ csrf_field() }}
             <h2 align="center">Search Fee Records</h2>
             <div class="input-group">
-                <input type="text" class="form-control" name="q" placeholder="Search by Student ID"> <span class = "input-group-btn">
+                <input type="text" class="form-control" name="q" placeholder="Student ID Number"> <span class = "input-group-btn">
                     <button type="submit" class="btn btn-primary">Search</button>
                         <span class="glyphicon glyphicon-search"></span>
                     </button>

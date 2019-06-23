@@ -34,10 +34,15 @@ class PagesController extends Controller
         if ($q != ""){
         $student = Fees::where('student_id', 'LIKE', '%'. $q . '%')->get();
     
-        if(count($student) > 0)
+        if(count($student) > 0){
             return view('98587.fee_search')->withDetails($student)->withQuery($q);
         }
-        return view('98587.fee_search')->withMessage("No Records Found in the Database");
+        else {
+           return view('98587.fee_search')->withMessage("No Records Found in the Database. Try Again.");
+        }
+       }
+        
+      return view('98587.fee_search')->withMessage("Enter Student ID to search");
 
     }
 
