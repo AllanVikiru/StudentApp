@@ -8,7 +8,7 @@
 		<div class="jumbotron">
   <h2 align="center">Fees Form</h2>              
 {!! Form::open(['action' => 'FeesController@store' , 'method' => 'POST']) !!}
-
+{{ csrf_field() }}
   <div class="form-group">
   	{{Form::label('student_id', 'Student ID')}}
     {{Form::text('student_id', '', ['class' => 'form-control', 'placeholder' => 'Student ID'])}}

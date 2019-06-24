@@ -6,7 +6,7 @@
 		<div class="jumbotron">
   <h2 align="center">Students Form</h2>              
 {!! Form::open(['action' => 'StudentController@store' , 'method' => 'POST']) !!}
-
+{{ csrf_field() }}
  <div class="form-group">
   	{{Form::label('name', 'Student ID')}}
     {{Form::text('student_id', '', ['class' => 'form-control', 'placeholder' => 'Student ID'])}}
