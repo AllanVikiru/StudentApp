@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Database\QueryException;
 use App\Fees;
 use DB;
 
@@ -57,10 +58,12 @@ class FeesController extends Controller
         $fees->student_id = $request->input('student_id');
         $fees->amount = $request->input('amount');
         $fees->dop = $request->input('dop');
-        $fees->save();
-
-        return redirect('/fees/create')->with('success', 'Payment Made'); //
-    
+        try{
+            $fees->save();
+        }catch(QueryException $ex){ 
+             return redirect('/fees/create')->with('error', 'Payment Failed. Please enter a valid Student ID');//
+        }
+        return redirect('/fees/create')->with('success', 'Payment Made'); 
     }
 
     /**
