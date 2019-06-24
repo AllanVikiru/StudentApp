@@ -15,10 +15,11 @@ class CreateFeesTable extends Migration
     {
         Schema::create('fees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('student_id');
+            $table->unsignedInteger('student_id');
             $table->double('amount', 10, 2);
             $table->date('dop');
             $table->timestamps();
+            $table->foreign('student_id')->references('student_id')->on('students');
         });
     }
 

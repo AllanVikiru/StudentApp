@@ -37,6 +37,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'student_id' => 'required',
             'name' => 'required',
             'dob' =>'required',
             'email' => 'required'
@@ -44,12 +45,13 @@ class StudentController extends Controller
 
         //Create Post
         $student = new Student;
+        $student->student_id = $request->input('student_id');
         $student->name = $request->input('name');
         $student->dob = $request->input('dob');
         $student->email = $request->input('email');
         $student->save();
 
-        return redirect('/student/create')->with('success', 'Student Registered'); //
+        return redirect('/student/create')->with('success', 'Student Registered' ); //
     }
 
     /**

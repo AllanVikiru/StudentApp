@@ -7,6 +7,11 @@
   <h2 align="center">Students Form</h2>              
 {!! Form::open(['action' => 'StudentController@store' , 'method' => 'POST']) !!}
 
+ <div class="form-group">
+  	{{Form::label('name', 'Student ID')}}
+    {{Form::text('student_id', '', ['class' => 'form-control', 'placeholder' => 'Student ID'])}}
+</div>
+
   <div class="form-group">
   	{{Form::label('name', 'Full Name')}}
     {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Full Name'])}}
