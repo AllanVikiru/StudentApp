@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use Illuminate\Database\QueryException;
 
 class StudentController extends Controller
 {
@@ -49,8 +50,11 @@ class StudentController extends Controller
         $student->name = $request->input('name');
         $student->dob = $request->input('dob');
         $student->email = $request->input('email');
+        try{
         $student->save();
-
+        }catch(QueryException $ex){ 
+             return redirect('/student/create')->with('error', 'Registration Failed. Student alredy exists with entered ID');//
+        }
         return redirect('/student/create')->with('success', 'Student Registered' ); //
     }
 
